@@ -12,11 +12,11 @@ int is_prime(int n) {
 
     for (i = 2; i <= n / 2; i++) {
         if (n % i == 0) {
-            return 1;
+            return 0;
         }
     }
 
-    return 0;
+    return 1;
 }
 
 // 1. Napisati funkciju koja prima jedan parametar a zatim izracunava:
@@ -28,11 +28,11 @@ double zadatak_1(int n) {
     for (i = 0; i < n; i++) {
         if (x) {
             s += 1/pow(2+i, 2);
+            x = 0;
         } else {
             s -= 1/pow(2+i, 2);
+            x = 1;
         }
-
-        x *= -1;
     }
 
     return 1 - s;
@@ -66,7 +66,8 @@ void zadatak_2(int n) {
 
 // 3. Napisati funckiju koja vraca broj u opsegu 10-20
 int zadatak_3() {
-    return (rand() % 11) + 10;
+    // (rand() % (max - min + 1)) + min
+    return (rand() % (20 - 10 + 1)) + 10;
 }
 
 // 4. Napisati funkciju u koj se:
@@ -168,10 +169,10 @@ void zadatak_6(int n) {
 int menu() {
     int op;
     do {
-        printf("Unesite broj zadatka (1-7) ili 8 za izlaz: ");
+        printf("Unesite broj zadatka (1-6) ili 7 za izlaz: ");
         scanf("%d", &op);
     }
-    while(op < 1 || op > 8);
+    while(op < 1 || op > 7);
 
     return op;
 }
@@ -211,7 +212,7 @@ int main(int argc, char **argv) {
                 scanf("%d", &n);
                 zadatak_6(n);
                 break;
-            case 8:
+            case 7:
                 return 0;
         }
     }
